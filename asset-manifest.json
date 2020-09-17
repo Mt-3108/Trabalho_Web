@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Trabalho_Web/static/css/main.146fde66.chunk.css",
-    "main.js": "/Trabalho_Web/static/js/main.502f8d83.chunk.js",
-    "main.js.map": "/Trabalho_Web/static/js/main.502f8d83.chunk.js.map",
+    "main.css": "/Trabalho_Web/static/css/main.dd550397.chunk.css",
+    "main.js": "/Trabalho_Web/static/js/main.8b5d3066.chunk.js",
+    "main.js.map": "/Trabalho_Web/static/js/main.8b5d3066.chunk.js.map",
     "runtime-main.js": "/Trabalho_Web/static/js/runtime-main.c1995df1.js",
     "runtime-main.js.map": "/Trabalho_Web/static/js/runtime-main.c1995df1.js.map",
-    "static/js/2.1be99fac.chunk.js": "/Trabalho_Web/static/js/2.1be99fac.chunk.js",
-    "static/js/2.1be99fac.chunk.js.map": "/Trabalho_Web/static/js/2.1be99fac.chunk.js.map",
+    "static/js/2.a44dc34e.chunk.js": "/Trabalho_Web/static/js/2.a44dc34e.chunk.js",
+    "static/js/2.a44dc34e.chunk.js.map": "/Trabalho_Web/static/js/2.a44dc34e.chunk.js.map",
     "index.html": "/Trabalho_Web/index.html",
-    "precache-manifest.ea556212aea429daa701c796e6186f44.js": "/Trabalho_Web/precache-manifest.ea556212aea429daa701c796e6186f44.js",
+    "precache-manifest.4a139192317571450cb93576d65991c0.js": "/Trabalho_Web/precache-manifest.4a139192317571450cb93576d65991c0.js",
     "service-worker.js": "/Trabalho_Web/service-worker.js",
-    "static/css/main.146fde66.chunk.css.map": "/Trabalho_Web/static/css/main.146fde66.chunk.css.map",
-    "static/js/2.1be99fac.chunk.js.LICENSE.txt": "/Trabalho_Web/static/js/2.1be99fac.chunk.js.LICENSE.txt",
-    "static/js/main.502f8d83.chunk.js.LICENSE.txt": "/Trabalho_Web/static/js/main.502f8d83.chunk.js.LICENSE.txt",
+    "static/css/main.dd550397.chunk.css.map": "/Trabalho_Web/static/css/main.dd550397.chunk.css.map",
+    "static/js/2.a44dc34e.chunk.js.LICENSE.txt": "/Trabalho_Web/static/js/2.a44dc34e.chunk.js.LICENSE.txt",
+    "static/js/main.8b5d3066.chunk.js.LICENSE.txt": "/Trabalho_Web/static/js/main.8b5d3066.chunk.js.LICENSE.txt",
     "static/media/cassandra_logo.png": "/Trabalho_Web/static/media/cassandra_logo.847e84f8.png",
     "static/media/logo.svg": "/Trabalho_Web/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c1995df1.js",
-    "static/js/2.1be99fac.chunk.js",
-    "static/css/main.146fde66.chunk.css",
-    "static/js/main.502f8d83.chunk.js"
+    "static/js/2.a44dc34e.chunk.js",
+    "static/css/main.dd550397.chunk.css",
+    "static/js/main.8b5d3066.chunk.js"
   ]
 }
