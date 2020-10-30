@@ -10,6 +10,7 @@ module.exports = class User extends MongoDocument {
         this.collection = 'users';
     }
     static findOne (_id) {
+        
         return super.findOne(_id, 'users').then((result) => {
             return new User(result);
         });

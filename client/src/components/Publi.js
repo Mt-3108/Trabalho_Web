@@ -1,13 +1,12 @@
 import React from 'react';
 import axios  from 'axios';
-import Publi from './Publi'
 
 
 export default class Api extends React.Component{
     constructor(props){
         super(props);
         this.state = {mensagem:'',
-            name:'',data: ''}
+            name:'', age:''}
         
     }
 
@@ -18,16 +17,17 @@ export default class Api extends React.Component{
     }
 
     submit(){
+
+      const name = this.state.name;
+      const age = this.state.age;
   
         if(this.validate()){
-            axios.get('/publication/search?name='+this.state.name).then((resposta)=>{
+            axios.post('/publication/save',{name, age}).then((resposta)=>{
                 console.log(resposta)
                 if(resposta){
-                    this.setState({data: resposta.data.age,mensagem:'Pesquisa Feita com Sucesso'})
+                    this.setState({mensagem:'Nome inserido com sucesso'})
                 }
 
-              }).catch((error) => {
-                console.log(error.response);
               });
         }
       
@@ -42,16 +42,19 @@ export default class Api extends React.Component{
         }
         return true;
     }
+
         
     render(){
             return(
                 <div>
-                    {localStorage.getItem('role') === 'admin' && <Publi/>}
-                    <p className='nomeDesejado'>Digite o nome desejado:</p>
+                    <h1>Criação de conteúdo:</h1>
+                    <p className='nomeDesejado'>Digite o nome:</p>
                     <input className ='enviarNome' type='text' name='name' onChange={this.onChange.bind(this)}></input>
+                    <p className='nomeDesejado'>Digite a idade:</p>
+                    <input className ='enviarNome' type='text' name='age' onChange={this.onChange.bind(this)}></input>
                   <div className='btEnviar'>
                      <button onClick={this.submit.bind(this)}>
-                        Enviar
+                        Gravar
                     </button>
                   </div>
                    

@@ -3,8 +3,11 @@
 module.exports = function validateRegister(user){
     listUser = [];
     let errorRegister = {};
-        console.log(user);
+     
 
+        if(user.name==''){
+            errorRegister.name =  'Seu nome não deve possuir zero caracteres';
+        }
         if(user.email==''){
             errorRegister.email =  'Seu email não deve possuir zero caracteres';
         }
@@ -22,13 +25,12 @@ module.exports = function validateRegister(user){
             errorRegister.password = 'Sua senha não deve possuir menos que 3 caracteres';
         }
 
-        validarEmail();
-        if(!validarEmail(user.email)){
-            errorRegister.email = 'Seu email não foi reconhecido como um email válido';
-        }
+        
+     
+        
 
   
-       return {errorRegister,validRegister:Object.keys(errorRegister).length};
+       return {errorRegister,valid:Object.keys(errorRegister).length};
 }
 
 function  validarEmail(str){

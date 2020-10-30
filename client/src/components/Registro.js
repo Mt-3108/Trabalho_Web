@@ -12,8 +12,8 @@ export default class Registro extends React.Component{
     
     constructor(props){
         super(props);
-        this.state = {mensagem:'',erro:{},show: false ,email:''
-                     , password:'' ,
+        this.state = {mensagem:'',name: '',erro:{},show: false ,email:''
+                     , password:'', 
                      password_save:''};
     }
 
@@ -26,25 +26,23 @@ export default class Registro extends React.Component{
     }
 
     submmit(){
-        
         const email = this.state.email;
         const password = this.state.password;
         const passwordSave = this.state.password_save;
-        const userObj={
-            email,password
-        };
+        const name = this.state.name;
         /*Constante valid recebe método validate*/
         //const valid = this.validate(email,password,passwordSave);
 
         /*se a string erro retornada estiver vazia*/
-      
+        
         if(this.validate(email,password,passwordSave)){
-            axios.post('/users/register',{email,password}).then((resposta)=>{
-               
-            
+            axios.post('/users/register',{name,email,password}).then((resposta)=>{
+                
+                console.log(resposta)
                 if(resposta){
                     /*confirmação do token*/
                     localStorage.setItem('token',resposta.data.token);
+                    localStorage.setItem('role',resposta.data.role);
                     window.location.reload(false);
                     alert('Registro concluido com sucesso.')
                     
@@ -54,7 +52,7 @@ export default class Registro extends React.Component{
     
             }).catch((error) => {
                 console.log(error.response);
-                this.setState({mensagem : error.response.data.error})
+                this.setState({mensagem : error.response.data.message})
               });
             //alert(valid);
           //  this.validate(validate);
@@ -111,7 +109,7 @@ export default class Registro extends React.Component{
                // erro += 'O email não é valido\n';
                erro['email'] ='O email não é valido';
         }
-           
+
         this.setState({erro:erro})
         return isValid;
     }
@@ -141,31 +139,38 @@ export default class Registro extends React.Component{
                     
                         {this.state.show && <div>
                         <div className='registro'>
-                          
-                           <h2 className='emailRegistro'>E-mail:</h2>
-                                
-                                <input className='inputEmail' type='text' name='email' onChange={this.onChange.bind(this)}></input>
-                                <span className='erro'>
-                                    {this.state.erro['email']}
-                                </span>
-                                <h2 className= 'senhaRegistro'>Senha:</h2>
-                                <input  type='password' name='password' onChange={this.onChange.bind(this)}></input>
-                                <span className='erro'>
-                                    {this.state.erro['password']}
-                                </span>
-                                <h2 className='confirmSenRegistro'>Confirmação de senha:</h2>
-                                <input className = 'confirmSenInput'  type='password' name='password_save' onChange={this.onChange.bind(this)}></input>
-                                <span className='erro'>
-                                    {this.state.erro['passwordSave']}
-                                </span>
-                                <div className='logbtRegistro'>
-                                    <button onClick={this.submmit.bind(this)}>
-                                            Registrar
-                                    </button>
-                                        <span className='erro'>
-                                            {this.state.mensagem}
-                                        </span>
-                                </div>
+                            
+                           
+                        <h2 className='emailRegistro'>Nome:</h2>
+
+                            <input className='inputName' type='text' name='name' onChange={this.onChange.bind(this)}></input>
+                            <span className='erro'>
+                                {this.state.erro['name']}
+                            </span>
+                            <h2 className='emailRegistro'>E-mail:</h2>
+
+                            <input className='inputEmail' type='text' name='email' onChange={this.onChange.bind(this)}></input>
+                            <span className='erro'>
+                                {this.state.erro['email']}
+                            </span>
+                            <h2 className= 'senhaRegistro'>Senha:</h2>
+                            <input  type='password' name='password' onChange={this.onChange.bind(this)}></input>
+                            <span className='erro'>
+                                 {this.state.erro['password']}
+                            </span>
+                            <h2 className='confirmSenRegistro'>Confirmação de senha:</h2>
+                            <input className = 'confirmSenInput'  type='password' name='password_save' onChange={this.onChange.bind(this)}></input>
+                            <span className='erro'>
+                                 {this.state.erro['passwordSave']}
+                            </span>
+                            <div className='logbtRegistro'>
+                                <button onClick={this.submmit.bind(this)}>
+                                        Registrar
+                                </button>
+                                    <span className='erro'>
+                                        {this.state.mensagem}
+                                    </span>
+                            </div>
                            
 
                         </div>

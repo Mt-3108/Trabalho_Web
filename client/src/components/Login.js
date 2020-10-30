@@ -20,13 +20,14 @@ export default class Login extends React.Component{
             if(resposta){
                 /*token - resposta da api, data e token vem da API*/
                 localStorage.setItem('token',resposta.data.token);
+                localStorage.setItem('role',resposta.data.role);
                 window.location.reload(false);
                 alert('Login feito com sucesso');
             }
 
         }).catch((error) => {
             console.log(error.response);
-            this.setState({mensagem : error.response.data.error})
+            this.setState({mensagem : error.response.data.message})
           });
         
     }
