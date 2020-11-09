@@ -1,9 +1,15 @@
 {
   "name": "trabalho-web-master",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node app.js",
+    "server": "nodemon app.js --ignore tests",
+    "client": "npm run start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

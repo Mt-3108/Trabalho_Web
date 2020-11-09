@@ -51,8 +51,7 @@ export default class Registro extends React.Component{
                 
     
             }).catch((error) => {
-                console.log(error.response);
-                this.setState({mensagem : error.response.data.message})
+                this.setState({mensagem : error.response.data.error})
               });
             //alert(valid);
           //  this.validate(validate);

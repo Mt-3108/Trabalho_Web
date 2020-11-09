@@ -7,7 +7,7 @@ export default class Api extends React.Component{
     constructor(props){
         super(props);
         this.state = {mensagem:'',
-            name:'',data: ''}
+            text:'',data: []}
         
     }
 
@@ -20,11 +20,19 @@ export default class Api extends React.Component{
     submit(){
   
         if(this.validate()){
-            axios.get('/publication/search?name='+this.state.name).then((resposta)=>{
-                console.log(resposta)
+            axios.get('/publication/search?summary='+this.state.text).then((resposta)=>{
                 if(resposta){
-                    this.setState({data: resposta.data.age,mensagem:'Pesquisa Feita com Sucesso'})
+                    const res = resposta.data;
+                    let mes;
+                    if(res.length){
+                        mes = 'Pesquisa Feita com Sucesso';
+                    } else {
+                        mes = 'Não foram econtrados resultados';
+                    }
+                    this.setState({data: res,mensagem:mes})
                 }
+
+        
 
               }).catch((error) => {
                 console.log(error.response);
@@ -36,7 +44,7 @@ export default class Api extends React.Component{
     validate(){
         
 
-        if(this.state.name.length<3){
+        if(this.state.text.length<3){
             this.setState({mensagem:'O nome não deve possuir menos de três caracteres.'})
             return false;
         }
@@ -47,8 +55,8 @@ export default class Api extends React.Component{
             return(
                 <div>
                     {localStorage.getItem('role') === 'admin' && <Publi/>}
-                    <p className='nomeDesejado'>Digite o nome desejado:</p>
-                    <input className ='enviarNome' type='text' name='name' onChange={this.onChange.bind(this)}></input>
+                    <p className='nomeDesejado'>Digite o texto desejado:</p>
+                    <input className ='enviarNome' type='text' name='text' onChange={this.onChange.bind(this)}></input>
                   <div className='btEnviar'>
                      <button onClick={this.submit.bind(this)}>
                         Enviar
@@ -56,7 +64,15 @@ export default class Api extends React.Component{
                   </div>
                    
                     <h1>
-                        {this.state.data}
+                    <ul>
+                    {this.state.data.map(item => (
+                       <li>
+                           <h2>{item.name}</h2>
+                            <p>{item.age}</p>
+                            <p>{item.summary}</p>
+                       </li>
+                    ))}
+                     </ul> 
                     </h1>
 
                     <span >

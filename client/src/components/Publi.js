@@ -6,7 +6,7 @@ export default class Api extends React.Component{
     constructor(props){
         super(props);
         this.state = {mensagem:'',
-            name:'', age:''}
+            name:'', age:'', summary:''}
         
     }
 
@@ -20,15 +20,19 @@ export default class Api extends React.Component{
 
       const name = this.state.name;
       const age = this.state.age;
+      const summary = this.state.summary; 
   
         if(this.validate()){
-            axios.post('/publication/save',{name, age}).then((resposta)=>{
+            axios.post('/publication/save',{name, age, summary}).then((resposta)=>{
                 console.log(resposta)
                 if(resposta){
-                    this.setState({mensagem:'Nome inserido com sucesso'})
+                    this.setState({mensagem:'Pessoa inserida com sucesso'})
                 }
 
-              });
+            }).catch((error) => {
+                this.setState({mensagem : error.response.data.error})
+                
+              });;
         }
       
     }
@@ -48,10 +52,14 @@ export default class Api extends React.Component{
             return(
                 <div>
                     <h1>Criação de conteúdo:</h1>
+                    <p>Selecione a imagem de perfil</p>
+                    <input type="file" name="image" accept="image/png,image/jpeg"></input>
                     <p className='nomeDesejado'>Digite o nome:</p>
                     <input className ='enviarNome' type='text' name='name' onChange={this.onChange.bind(this)}></input>
                     <p className='nomeDesejado'>Digite a idade:</p>
                     <input className ='enviarNome' type='text' name='age' onChange={this.onChange.bind(this)}></input>
+                    <p className='nomeDesejado'>Resumo</p>
+                    <input className ='resumo' type='text' name='summary' onChange={this.onChange.bind(this)}></input>
                   <div className='btEnviar'>
                      <button onClick={this.submit.bind(this)}>
                         Gravar

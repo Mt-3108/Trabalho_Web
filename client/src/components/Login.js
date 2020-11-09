@@ -26,8 +26,7 @@ export default class Login extends React.Component{
             }
 
         }).catch((error) => {
-            console.log(error.response);
-            this.setState({mensagem : error.response.data.message})
+            this.setState({mensagem : error.response.data.error})
           });
         
     }

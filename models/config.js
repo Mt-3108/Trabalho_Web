@@ -1,5 +1,7 @@
+let mongo = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjetoWeb';
+
 module.exports = {
-    uri: 'mongodb://localhost:27017/ProjetoWeb',
+    uri: mongo,
     db: 'ProjetoWeb',
     options: {
         useNewUrlParser: true
