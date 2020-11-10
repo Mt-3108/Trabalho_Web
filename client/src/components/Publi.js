@@ -31,7 +31,7 @@ export default class Api extends React.Component{
 
             }).catch((error) => {
                 this.setState({mensagem : error.response.data.error})
-                
+
               });;
         }
       
@@ -50,15 +50,13 @@ export default class Api extends React.Component{
         
     render(){
             return(
-                <div>
+                <div className='publi'>
                     <h1>Criação de conteúdo:</h1>
-                    <p>Selecione a imagem de perfil</p>
-                    <input type="file" name="image" accept="image/png,image/jpeg"></input>
                     <p className='nomeDesejado'>Digite o nome:</p>
                     <input className ='enviarNome' type='text' name='name' onChange={this.onChange.bind(this)}></input>
-                    <p className='nomeDesejado'>Digite a idade:</p>
+                    <p className='idadeDesejada'>Digite a idade:</p>
                     <input className ='enviarNome' type='text' name='age' onChange={this.onChange.bind(this)}></input>
-                    <p className='nomeDesejado'>Resumo</p>
+                    <p className='resumoTitle'>Resumo</p>
                     <input className ='resumo' type='text' name='summary' onChange={this.onChange.bind(this)}></input>
                   <div className='btEnviar'>
                      <button onClick={this.submit.bind(this)}>

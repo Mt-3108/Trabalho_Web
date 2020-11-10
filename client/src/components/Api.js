@@ -55,7 +55,7 @@ export default class Api extends React.Component{
             return(
                 <div>
                     {localStorage.getItem('role') === 'admin' && <Publi/>}
-                    <p className='nomeDesejado'>Digite o texto desejado:</p>
+                    <p className='textoDesejado'>Digite o texto desejado:</p>
                     <input className ='enviarNome' type='text' name='text' onChange={this.onChange.bind(this)}></input>
                   <div className='btEnviar'>
                      <button onClick={this.submit.bind(this)}>
@@ -66,9 +66,14 @@ export default class Api extends React.Component{
                     <h1>
                     <ul>
                     {this.state.data.map(item => (
-                       <li>
-                           <h2>{item.name}</h2>
+                       <li className='personList'>
+                          <h1>Person</h1>
+                           <p>Nome:</p>
+                            <h2 className='personListName'>{item.name}</h2>
+                            
+                            <p>Idade:</p>
                             <p>{item.age}</p>
+                            <p>Resumo:</p>
                             <p>{item.summary}</p>
                        </li>
                     ))}
